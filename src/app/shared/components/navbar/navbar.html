@@ -1,0 +1,42 @@
+
+<nav class="navbar">
+
+  <div class="navbar-container">
+
+    <a routerLink="/" class="brand">
+      <span class="brand-icon">E</span>
+      <span>Ecommerce</span>
+    </a>
+
+    <div class="nav-links">
+
+      @if (!isAdmin) {
+
+        <a routerLink="/"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }">
+          Home
+        </a>
+
+        <a routerLink="/admin">
+          Admin
+        </a>
+
+      } @else {
+
+        <a routerLink="/">
+          Visit Store
+        </a>
+
+        <a routerLink="/admin"
+           routerLinkActive="active">
+          Dashboard
+        </a>
+
+      }
+
+    </div>
+
+  </div>
+
+</nav>

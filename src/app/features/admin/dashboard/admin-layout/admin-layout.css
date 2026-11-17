@@ -1,0 +1,69 @@
+
+.admin-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-content {
+  flex: 1;
+  background: #f1f5f9;
+  padding: 55px 24px;
+}
+
+.admin-header,
+.welcome-card {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.admin-tag {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.admin-header h1 {
+  color: #172554;
+  font-size: 36px;
+  margin: 12px 0;
+}
+
+.admin-header p {
+  color: #64748b;
+}
+
+.welcome-card {
+  margin-top: 35px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.welcome-card h2 {
+  color: #172554;
+  font-size: 23px;
+}
+
+.welcome-card p {
+  max-width: 600px;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.admin-icon {
+  font-size: 55px;
+}
+
+@media (max-width: 600px) {
+  .welcome-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

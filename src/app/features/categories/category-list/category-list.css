@@ -1,0 +1,84 @@
+.category-section {
+  padding: 60px 8%;
+  min-height: 65vh;
+  background-color: #f8fafc;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-label {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.section-heading h1 {
+  color: #172554;
+  font-size: 32px;
+  margin: 12px 0;
+}
+
+.section-heading p {
+  color: #64748b;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.category-card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.category-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.category-card h3 {
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.category-card p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.status-message {
+  text-align: center;
+  color: #64748b;
+  padding: 30px;
+}
+
+.error-message {
+  text-align: center;
+  color: #dc2626;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .category-section {
+    padding: 40px 5%;
+  }
+
+  .section-heading h1 {
+    font-size: 26px;
+  }
+}

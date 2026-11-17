@@ -1,33 +1,25 @@
+<app-navbar [isAdmin]="true"></app-navbar>
 
-<div class="admin-container">
+<section class="admin-welcome">
 
-  <app-navbar [isAdmin]="true"></app-navbar>
+  <div class="welcome-content">
 
-  <main class="admin-content">
+    <span class="welcome-label">ADMIN PANEL</span>
 
-    <section class="admin-header">
-      <span class="admin-tag">ADMINISTRATION</span>
-      <h1>Admin Dashboard</h1>
-      <p>
-        Manage your ecommerce application from one place.
-      </p>
-    </section>
+    <h1>Welcome to Admin Dashboard</h1>
 
-    <section class="welcome-card">
-      <div>
-        <h2>Welcome to the Admin Workspace</h2>
-        <p>
-          Your administration area is ready.
-          Product, category and order management
-          will be implemented in upcoming features.
-        </p>
-      </div>
+    <p>
+      Manage your ecommerce store, categories, products and orders.
+    </p>
 
-      <div class="admin-icon">⚙️</div>
-    </section>
+    <a routerLink="/admin/categories" class="manage-link">
+      Manage Categories
+    </a>
 
-  </main>
+  </div>
 
-  <app-footer></app-footer>
+</section>
 
-</div>
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>

@@ -1,69 +1,59 @@
-
-.admin-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.admin-welcome {
+  min-height: 250px;
+  background: #f8fafc;
+  padding: 20px 6%;
+  box-sizing: border-box;
 }
 
-.admin-content {
-  flex: 1;
-  background: #f1f5f9;
-  padding: 55px 24px;
-}
-
-.admin-header,
-.welcome-card {
+.welcome-content {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
+  margin-left: 0;
 }
 
-.admin-tag {
+.welcome-label {
+  display: inline-block;
   color: #2563eb;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
-.admin-header h1 {
+.welcome-content h1 {
   color: #172554;
   font-size: 36px;
-  margin: 12px 0;
+  margin: 5px 0;
 }
 
-.admin-header p {
+.welcome-content p {
   color: #64748b;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
-.welcome-card {
-  margin-top: 35px;
+.manage-link {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 11px 20px;
   background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  color: #1d4ed8;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.2s;
 }
 
-.welcome-card h2 {
-  color: #172554;
-  font-size: 23px;
-}
-
-.welcome-card p {
-  max-width: 600px;
-  color: #64748b;
-  line-height: 1.7;
-}
-
-.admin-icon {
-  font-size: 55px;
+.manage-link:hover {
+  background: #dbeafe;
 }
 
 @media (max-width: 600px) {
-  .welcome-card {
-    flex-direction: column;
-    align-items: flex-start;
+  .admin-welcome {
+    padding: 20px 5%;
+  }
+
+  .welcome-content h1 {
+    font-size: 28px;
   }
 }

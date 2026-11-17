@@ -1,0 +1,179 @@
+<section class="management-section">
+
+  <div class="management-heading">
+    <div>
+      <span class="section-label">ADMINISTRATION</span>
+      <h1>Category Management</h1>
+      <p>Create and manage your product categories.</p>
+    </div>
+  </div>
+
+  <div class="management-content">
+
+    <div class="category-form-card">
+
+      <h2>
+        {{ selectedCategoryId() === null ? 'Add Category' : 'Edit Category' }}
+      </h2>
+
+      <form (ngSubmit)="saveCategory()">
+
+        <div class="form-group">
+
+          <label for="categoryName">Category Name</label>
+
+          <input
+            type="text"
+            id="categoryName"
+            name="categoryName"
+            [(ngModel)]="categoryName"
+            placeholder="Enter category name"
+            required
+            maxlength="100"
+          />
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="description">Description</label>
+
+          <textarea
+            id="description"
+            name="description"
+            [(ngModel)]="description"
+            placeholder="Enter category description"
+            rows="4"
+            maxlength="500"
+          ></textarea>
+
+        </div>
+
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            class="primary-button"
+            [disabled]="isSaving()"
+          >
+            {{ isSaving() ? 'Saving...' : (selectedCategoryId() === null ? 'Add Category' : 'Update Category') }}
+          </button>
+
+          @if (selectedCategoryId() !== null) {
+
+            <button
+              type="button"
+              class="secondary-button"
+              (click)="resetForm()"
+            >
+              Cancel
+            </button>
+
+          }
+
+        </div>
+
+      </form>
+
+      @if (errorMessage()) {
+      <p class="error-message">
+        {{ errorMessage() }}
+      </p>
+}
+
+      @if (successMessage()) {
+        <p class="success-message">
+          {{ successMessage() }}
+        </p>
+      }
+
+    </div>
+
+    <div class="category-table-card">
+
+      <h2>Existing Categories</h2>
+
+      @if (isLoading()) {
+        <p>Loading categories...</p>
+      } @else {
+
+        @if (categories().length > 0) {
+
+          <div class="table-container">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Category Name</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                @for (category of categories(); track category.categoryId) {
+
+                  <tr>
+
+                    <td>{{ category.categoryId }}</td>
+
+                    <td>{{ category.categoryName }}</td>
+
+                    <td>{{ category.description || '-' }}</td>
+
+                    <td>
+                      <span
+                        [class.active-status]="category.isActive"
+                        [class.inactive-status]="!category.isActive"
+                      >
+                        {{ category.isActive ? 'Active' : 'Inactive' }}
+                      </span>
+                    </td>
+
+                    <td class="action-buttons">
+
+                      <button
+                        type="button"
+                        class="edit-button"
+                        (click)="editCategory(category)"
+                      >
+                        Edit
+                      </button>
+
+                      <button
+                        type="button"
+                        class="delete-button"
+                        (click)="deleteCategory(category.categoryId)"
+                      >
+                        Delete
+                      </button>
+
+                    </td>
+
+                  </tr>
+
+                }
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        } @else {
+
+          <p class="status-message">No categories found.</p>
+
+        }
+
+      }
+
+    </div>
+
+  </div>
+
+</section>

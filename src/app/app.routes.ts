@@ -9,6 +9,9 @@ import { CategoryManagement } from './features/admin/category-management/categor
 import { ProductList } from './features/products/product-list/product-list';
 import { ProductDetails } from './features/products/product-details/product-details';
 
+import { Login } from './features/auth/login/login';
+import { Register } from './features/auth/register/register';
+
 export const routes: Routes = [
 
   {
@@ -34,6 +37,14 @@ export const routes: Routes = [
   {
   path: 'products',
   component: ProductList
+},
+{
+  path: 'login',
+  component: Login
+},
+{
+  path: 'register',
+  component: Register
 },
 {
   path: 'products/:id',

@@ -1,0 +1,109 @@
+
+<div class="auth-page">
+
+  <div class="auth-card">
+
+    <h1>Create Account</h1>
+
+    <p class="subtitle">Register as a new customer</p>
+
+    <form #registerForm="ngForm" (ngSubmit)="onRegister()">
+
+      <div class="form-group">
+
+        <label for="fullName">Full Name</label>
+
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          [(ngModel)]="registerData.fullName"
+          required
+          minlength="2"
+          maxlength="100"
+          placeholder="Enter your full name"
+          #fullName="ngModel">
+
+        @if (fullName.invalid && fullName.touched) {
+          <small class="field-error">
+            Please enter your name.
+          </small>
+        }
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="email">Email Address</label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="registerData.email"
+          required
+          email
+          placeholder="Enter your email"
+          #email="ngModel">
+
+        @if (email.invalid && email.touched) {
+          <small class="field-error">
+            Please enter a valid email address.
+          </small>
+        }
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="password">Password</label>
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="registerData.password"
+          required
+          minlength="6"
+          maxlength="100"
+          placeholder="Create a password"
+          #password="ngModel">
+
+        @if (password.invalid && password.touched) {
+          <small class="field-error">
+            Password must contain at least 6 characters.
+          </small>
+        }
+
+      </div>
+
+      @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
+      @if (successMessage) {
+        <p class="success-message">{{ successMessage }}</p>
+      }
+
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid || isLoading">
+
+        @if (isLoading) {
+          Registering...
+        } @else {
+          Register
+        }
+
+      </button>
+
+    </form>
+
+    <p class="auth-link">
+      Already have an account?
+      <a routerLink="/login">Login here</a>
+    </p>
+
+  </div>
+
+</div>

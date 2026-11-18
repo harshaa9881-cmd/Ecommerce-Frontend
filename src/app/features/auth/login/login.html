@@ -1,0 +1,84 @@
+
+<div class="auth-page">
+
+  <div class="auth-card">
+
+    <h1>Welcome Back</h1>
+
+    <p class="subtitle">Login to your account</p>
+
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+
+      <div class="form-group">
+
+        <label for="email">Email Address</label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="loginData.email"
+          required
+          email
+          placeholder="Enter your email"
+          #email="ngModel">
+
+        @if (email.invalid && email.touched) {
+          <small class="field-error">
+            Please enter a valid email address.
+          </small>
+        }
+
+      </div>
+
+      <div class="form-group">
+
+        <label for="password">Password</label>
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="loginData.password"
+          required
+          placeholder="Enter your password"
+          #password="ngModel">
+
+        @if (password.invalid && password.touched) {
+          <small class="field-error">
+            Password is required.
+          </small>
+        }
+
+      </div>
+
+      @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
+      @if (successMessage) {
+        <p class="success-message">{{ successMessage }}</p>
+      }
+
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid || isLoading">
+
+        @if (isLoading) {
+          Logging in...
+        } @else {
+          Login
+        }
+
+      </button>
+
+    </form>
+
+    <p class="auth-link">
+      Don't have an account?
+      <a routerLink="/register">Register here</a>
+    </p>
+
+  </div>
+
+</div>

@@ -17,9 +17,12 @@
            [routerLinkActiveOptions]="{ exact: true }">
           Home
         </a>
+        <a routerLink="/categories" routerLinkActive="active">
+            Categories
+        </a>
 
-        <a routerLink="/admin/categories" routerLinkActive="active">
-            Manage Categories
+        <a routerLink="/products" routerLinkActive="active">
+          Products
         </a>
         
         <a routerLink="/admin">
@@ -29,11 +32,14 @@
       } @else {
 
         <a routerLink="/">
-          Visit Store
+          Home
+        </a>
+        <a routerLink="/admin/categories" routerLinkActive="active">
+            Manage Categories
         </a>
 
-        <a routerLink="/categories" routerLinkActive="active">
-            Categories
+        <a routerLink="/products" routerLinkActive="active">
+          Products
         </a>
 
         <a routerLink="/admin"

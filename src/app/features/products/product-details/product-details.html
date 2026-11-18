@@ -1,0 +1,62 @@
+
+<div class="details-page">
+
+  <a routerLink="/products" class="back-link">
+    ← Back to Products
+  </a>
+
+  @if (isLoading) {
+    <p class="message">Loading product details...</p>
+  }
+
+  @if (errorMessage) {
+    <p class="error-message">{{ errorMessage }}</p>
+  }
+
+  @if (product) {
+
+    <div class="details-card">
+
+      <div class="product-image">
+
+        @if (product.imageUrl) {
+          <img [src]="product.imageUrl" [alt]="product.productName">
+        } @else {
+          <div class="image-placeholder">
+            No Image Available
+          </div>
+        }
+
+      </div>
+
+      <div class="product-information">
+
+        <p class="category">{{ product.categoryName }}</p>
+
+        <h1>{{ product.productName }}</h1>
+
+        <p class="description">
+          {{ product.description || 'No description available.' }}
+        </p>
+
+        <h2>
+          {{ product.price | currency:'INR':'symbol':'1.2-2' }}
+        </h2>
+
+        <p>
+          Available Stock: {{ product.stockQuantity }}
+        </p>
+
+        @if (product.stockQuantity > 0) {
+          <p class="available">In Stock</p>
+        } @else {
+          <p class="out-of-stock">Out of Stock</p>
+        }
+
+      </div>
+
+    </div>
+
+  }
+
+</div>

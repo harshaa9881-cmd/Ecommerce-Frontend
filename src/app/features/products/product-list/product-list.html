@@ -1,0 +1,110 @@
+
+<div class="products-page">
+
+  <div class="page-heading">
+    <h1>Our Products</h1>
+    <p>Explore our available products</p>
+  </div>
+
+  <div class="filter-section">
+
+    <input
+      type="text"
+      placeholder="Search products by name..."
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="searchProducts()">
+
+    <select
+      [(ngModel)]="selectedCategoryId"
+      (ngModelChange)="filterByCategory()">
+
+      <option [ngValue]="null">All Categories</option>
+
+      @for (category of categories(); track category.categoryId) {
+        <option [ngValue]="category.categoryId">
+          {{ category.categoryName }}
+        </option>
+      }
+
+    </select>
+
+    <button (click)="searchProducts()">Search</button>
+
+    <button
+      class="clear-button"
+      (click)="clearFilters()">
+      Clear
+    </button>
+
+  </div>
+
+  @if (categoryErrorMessage()) {
+    <p class="error-message">
+      {{ categoryErrorMessage() }}
+    </p>
+  }
+
+  @if (isCategoriesLoading()) {
+    <p class="message">Loading categories...</p>
+  }
+
+  @if (isLoading()) {
+
+    <p class="message">Loading products...</p>
+
+  } @else if (errorMessage()) {
+
+    <p class="error-message">
+      {{ errorMessage() }}
+    </p>
+
+  } @else {
+
+    @if (products().length > 0) {
+
+      <p class="result-count">
+        {{ totalCount() }} product(s) found
+      </p>
+
+      <div class="products-grid">
+
+        @for (product of products(); track product.productId) {
+
+          <app-product-card
+            [product]="product"
+            (viewDetails)="viewProductDetails($event)">
+          </app-product-card>
+
+        }
+
+      </div>
+
+      <div class="pagination">
+
+        <button
+          (click)="previousPage()"
+          [disabled]="pageNumber() === 1">
+          Previous
+        </button>
+
+        <span>
+          Page {{ pageNumber() }} of {{ totalPages() }}
+        </span>
+
+        <button
+          (click)="nextPage()"
+          [disabled]="pageNumber() >= totalPages()">
+          Next
+        </button>
+
+      </div>
+
+    } @else {
+
+      <p class="message">No products found.</p>
+
+    }
+
+  }
+
+</div>

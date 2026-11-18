@@ -1,0 +1,38 @@
+
+<div class="product-card">
+
+  @if (product.imageUrl) {
+    <img [src]="product.imageUrl" [alt]="product.productName">
+  } @else {
+    <div class="image-placeholder">
+      No Image Available
+    </div>
+  }
+
+  <div class="product-info">
+
+    <p class="category">{{ product.categoryName }}</p>
+
+    <h3>{{ product.productName }}</h3>
+
+    <p class="description">
+      {{ product.description || 'No description available.' }}
+    </p>
+
+    <h4>{{ product.price | currency:'INR':'symbol':'1.2-2' }}</h4>
+
+    <p class="stock">
+      @if (product.stockQuantity > 0) {
+        {{ product.stockQuantity }} available
+      } @else {
+        Out of Stock
+      }
+    </p>
+
+    <button (click)="onViewDetails()">
+      View Details
+    </button>
+
+  </div>
+
+</div>

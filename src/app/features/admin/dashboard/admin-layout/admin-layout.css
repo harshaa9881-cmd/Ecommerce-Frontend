@@ -57,3 +57,8 @@
     font-size: 28px;
   }
 }
+.manage-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}

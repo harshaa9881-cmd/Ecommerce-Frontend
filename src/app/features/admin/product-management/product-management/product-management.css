@@ -1,0 +1,201 @@
+.management-section {
+  padding: 40px 6%;
+  background-color: #f8fafc;
+  min-height: 75vh;
+}
+
+.management-heading {
+  margin-bottom: 30px;
+}
+
+.section-label {
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.management-heading h1 {
+  color: #172554;
+  margin: 10px 0;
+  font-size: 30px;
+}
+
+.management-heading p {
+  color: #64748b;
+}
+
+.management-content {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.5fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.product-form-card,
+.product-table-card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+}
+
+.product-form-card h2,
+.product-table-card h2 {
+  color: #1e293b;
+  font-size: 20px;
+  margin: 0 0 22px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  color: #334155;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font: inherit;
+  outline: none;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #2563eb;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button,
+.edit-button,
+.delete-button {
+  border: none;
+  border-radius: 7px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary-button {
+  background: #2563eb;
+  color: white;
+}
+
+.primary-button:disabled,
+.delete-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.secondary-button {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+
+th,
+td {
+  padding: 13px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+  color: #475569;
+  background: #f8fafc;
+  font-size: 13px;
+}
+
+td {
+  color: #334155;
+  font-size: 14px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 7px;
+}
+
+.edit-button {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.delete-button {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.available-stock {
+  color: #166534;
+  font-weight: 600;
+}
+
+.low-stock {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.error-message {
+  color: #dc2626;
+  margin-top: 15px;
+}
+
+.success-message {
+  color: #15803d;
+  margin-top: 15px;
+}
+
+.status-message {
+  color: #64748b;
+  padding: 20px 0;
+}
+
+@media (max-width: 900px) {
+  .management-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .management-section {
+    padding: 30px 5%;
+  }
+
+  .product-form-card,
+  .product-table-card {
+    padding: 18px;
+  }
+}

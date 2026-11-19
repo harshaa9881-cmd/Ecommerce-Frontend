@@ -41,7 +41,7 @@ export class Login {
         this.successMessage = response.message;
         this.isLoading = false;
 
-        this.router.navigate(['/products']);
+        this.router.navigate(['/admin']);
       },
 
       error: (error) => {

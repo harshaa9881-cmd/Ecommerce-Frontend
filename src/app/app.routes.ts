@@ -11,7 +11,7 @@ import { ProductDetails } from './features/products/product-details/product-deta
 
 import { Login } from './features/auth/login/login';
 import { Register } from './features/auth/register/register';
-
+import { ProductManagement } from './features/admin/product-management/product-management/product-management';
 export const routes: Routes = [
 
   {
@@ -31,7 +31,11 @@ export const routes: Routes = [
       {
         path: 'categories',
         component: CategoryManagement
-      }
+      },
+    {
+      path: 'products',
+      component: ProductManagement
+    }
     ]
   },
   {

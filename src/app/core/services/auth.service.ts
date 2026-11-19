@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,  HttpHeaders  } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
@@ -39,7 +39,17 @@ export class AuthService {
       })
     );
   }
+  getAuthHeaders(): HttpHeaders {
+    const token = this.getToken();
 
+    if (token) {
+      return new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      });
+    }
+
+    return new HttpHeaders();
+  }
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }

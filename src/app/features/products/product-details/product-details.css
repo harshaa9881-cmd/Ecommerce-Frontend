@@ -79,3 +79,38 @@
     grid-template-columns: 1fr;
   }
 }
+.add-to-cart-button {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  padding: 12px 18px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.view-cart-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.success-message {
+  color: #15803d;
+  margin-top: 15px;
+}
+
+.error-message {
+  color: #dc2626;
+  margin-top: 15px;
+}

@@ -54,7 +54,30 @@
         }
 
       </div>
+      @if (cartMessage) {
+        <p class="success-message">{{ cartMessage }}</p>
+      }
 
+      @if (cartErrorMessage) {
+        <p class="error-message">{{ cartErrorMessage }}</p>
+      }
+
+      <button
+        class="add-to-cart-button"
+        (click)="addToCart()"
+        [disabled]="product.stockQuantity <= 0 || isAddingToCart">
+
+        @if (isAddingToCart) {
+          Adding...
+        } @else {
+          Add to Cart
+        }
+
+      </button>
+
+      <a routerLink="/cart" class="view-cart-link">
+        View Cart
+      </a>
     </div>
 
   }

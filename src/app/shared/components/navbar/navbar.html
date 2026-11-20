@@ -24,10 +24,18 @@
         <a routerLink="/products" routerLinkActive="active">
           Products
         </a>
-        
+
+        <a routerLink="/cart" routerLinkActive="active">
+          Cart
+          <span class="cart-count">
+            {{ (cartCount$ | async) ?? 0 }}
+          </span>
+        </a>
+
         <a routerLink="/admin">
           Admin
         </a>
+        
         <a routerLink="/login" routerLinkActive="active">
           Login
         </a>

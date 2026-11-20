@@ -1,0 +1,134 @@
+
+<div class="cart-page">
+
+  <div class="page-heading">
+    <h1>My Shopping Cart</h1>
+    <p>Review the products you have added.</p>
+  </div>
+
+  @if (!isLoggedIn) {
+
+    <div class="cart-message">
+      <h2>Please Login</h2>
+      <p>You need to login to view your shopping cart.</p>
+
+      <a routerLink="/login" class="primary-button">
+        Login
+      </a>
+    </div>
+
+  } @else if (isLoading()) {
+
+    <p class="message">Loading your cart...</p>
+
+  } @else if (errorMessage()) {
+
+    <p class="error-message">{{ errorMessage() }}</p>
+
+  } @else if (cart() && cart()!.items.length > 0) {
+
+    @if (successMessage()) {
+      <p class="success-message">{{ successMessage() }}</p>
+    }
+
+    <div class="cart-layout">
+
+      <div class="cart-items">
+
+        @for (item of cart()!.items; track item.cartItemId) {
+
+          <div class="cart-item">
+
+            <div class="item-image">
+              @if (item.imageUrl) {
+                <img [src]="item.imageUrl" [alt]="item.productName">
+              } @else {
+                <div class="image-placeholder">
+                  No Image
+                </div>
+              }
+            </div>
+
+            <div class="item-details">
+
+              <h3>{{ item.productName }}</h3>
+
+              <p>
+                Unit Price:
+                {{ item.unitPrice | currency:'INR':'symbol':'1.2-2' }}
+              </p>
+
+              <p>
+                Subtotal:
+                {{ item.subtotal | currency:'INR':'symbol':'1.2-2' }}
+              </p>
+
+              <div class="quantity-controls">
+
+                <button
+                  (click)="updateQuantity(item, -1)"
+                  [disabled]="isUpdating() || item.quantity <= 1">
+                  -
+                </button>
+
+                <span>{{ item.quantity }}</span>
+
+                <button
+                  (click)="updateQuantity(item, 1)"
+                  [disabled]="isUpdating()">
+                  +
+                </button>
+
+              </div>
+
+              <button
+                class="remove-button"
+                (click)="removeItem(item.cartItemId)"
+                [disabled]="isUpdating()">
+                Remove
+              </button>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+      <div class="cart-summary">
+
+        <h2>Order Summary</h2>
+
+        <p>
+          Total Items:
+          {{ getTotalItems() }}
+        </p>
+
+        <h3>
+          Total:
+          {{ cart()!.totalAmount | currency:'INR':'symbol':'1.2-2' }}
+        </h3>
+
+        <p class="checkout-note">
+          Checkout will be available in the next commit.
+        </p>
+
+      </div>
+
+    </div>
+
+  } @else {
+
+    <div class="cart-message">
+      <h2>Your Cart is Empty</h2>
+      <p>You have not added any products yet.</p>
+
+      <a routerLink="/products" class="primary-button">
+        Browse Products
+      </a>
+    </div>
+
+  }
+
+</div>

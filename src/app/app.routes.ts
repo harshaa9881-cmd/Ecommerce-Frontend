@@ -6,6 +6,8 @@ import { AdminLayout } from './features/admin/dashboard/admin-layout/admin-layou
 import { CategoryList } from './features/categories/category-list/category-list';
 import { CategoryManagement } from './features/admin/category-management/category-management';
 
+import { CartPage } from './features/cart/cart-page/cart-page';
+
 import { ProductList } from './features/products/product-list/product-list';
 import { ProductDetails } from './features/products/product-details/product-details';
 
@@ -53,6 +55,10 @@ export const routes: Routes = [
 {
   path: 'products/:id',
   component: ProductDetails
+},
+{
+  path: 'cart',
+  component: CartPage
 },
 
   {

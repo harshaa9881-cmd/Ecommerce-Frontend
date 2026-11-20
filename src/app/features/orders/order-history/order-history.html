@@ -1,0 +1,62 @@
+<section class="orders-container">
+
+  <h1>My Orders</h1>
+
+  @if (loading) {
+    <p>Loading your orders...</p>
+  }
+  @else if (errorMessage) {
+    <p class="error-message">{{ errorMessage }}</p>
+  }
+  @else if (orders.length === 0) {
+    <div class="empty-orders">
+      <h2>No orders yet</h2>
+      <p>Your placed orders will appear here.</p>
+      <a routerLink="/products">Continue Shopping</a>
+    </div>
+  }
+  @else {
+
+    @for (order of orders; track order.orderId) {
+
+      <div class="order-card">
+
+        <div class="order-heading">
+          <h2>Order #{{ order.orderId }}</h2>
+          <span>{{ order.orderStatus }}</span>
+        </div>
+
+        <p>
+          Date: {{ order.orderDate | date:'medium' }}
+        </p>
+
+        <p>
+          Payment: {{ order.paymentMethod }}
+        </p>
+
+        <div class="order-items">
+
+          @for (item of order.items; track item.orderItemId) {
+            <div class="order-item">
+              <span>
+                {{ item.productName }} × {{ item.quantity }}
+              </span>
+
+              <span>
+                {{ item.subtotal | currency:'INR' }}
+              </span>
+            </div>
+          }
+
+        </div>
+
+        <h3>
+          Total: {{ order.totalAmount | currency:'INR' }}
+        </h3>
+
+      </div>
+    }
+
+  }
+
+</section>

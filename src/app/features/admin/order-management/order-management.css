@@ -1,0 +1,40 @@
+.admin-orders {
+  max-width: 1000px;
+  margin: 35px auto;
+  padding: 20px;
+}
+
+.admin-order-card {
+  margin: 20px 0;
+  padding: 25px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+}
+
+.order-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.status-section select {
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.success-message {
+  color: #16833b;
+}
+
+.error-message {
+  color: #c62828;
+}

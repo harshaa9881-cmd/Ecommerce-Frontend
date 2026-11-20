@@ -50,6 +50,30 @@ export class AuthService {
 
     return new HttpHeaders();
   }
+  getRole(): string | null {
+
+  const token = this.getToken();
+
+  if (!token) {
+    return null;
+  }
+
+  try {
+    const payload = JSON.parse(
+      atob(token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))
+    );
+
+    return (
+      payload['role'] ||
+      payload['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] ||
+      payload['roles'] ||
+      null
+    );
+
+  } catch {
+    return null;
+  }
+}
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }

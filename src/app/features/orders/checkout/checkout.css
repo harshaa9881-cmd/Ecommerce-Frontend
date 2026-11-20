@@ -1,0 +1,41 @@
+.checkout-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.checkout-container h1 {
+  margin-bottom: 25px;
+}
+
+.checkout-card {
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.checkout-card button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+.checkout-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #c62828;
+}

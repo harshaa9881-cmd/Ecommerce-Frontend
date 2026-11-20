@@ -79,3 +79,11 @@
   color: #ffffff;
   font-size: 12px;
 }
+.nav-links button {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 8px 12px;
+}

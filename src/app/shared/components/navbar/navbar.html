@@ -1,4 +1,3 @@
-
 <nav class="navbar">
 
   <div class="navbar-container">
@@ -10,59 +9,58 @@
 
     <div class="nav-links">
 
-      @if (!isAdmin) {
+      @if (isAdmin) {
 
-        <a routerLink="/"
-           routerLinkActive="active"
-           [routerLinkActiveOptions]="{ exact: true }">
-          Home
-        </a>
-        <a routerLink="/categories" routerLinkActive="active">
-            Categories
-        </a>
+        <a routerLink="/admin/categories">Manage Categories</a>
+        <a routerLink="/admin/products">Manage Products</a>
+        <a routerLink="/admin/orders">Manage Orders</a>
+        <a routerLink="/admin">Dashboard</a>
 
-        <a routerLink="/products" routerLinkActive="active">
-          Products
-        </a>
-
-        <a routerLink="/cart" routerLinkActive="active">
-          Cart
-          <span class="cart-count">
-            {{ (cartCount$ | async) ?? 0 }}
-          </span>
-        </a>
-
-        <a routerLink="/admin">
-          Admin
-        </a>
-        
-        <a routerLink="/login" routerLinkActive="active">
-          Login
-        </a>
-
-        <a routerLink="/register" routerLinkActive="active">
-          Register
-        </a>
+        <button type="button" (click)="logout()">
+          Logout
+        </button>
 
       } @else {
 
-        <a routerLink="/">
+        <a routerLink="/" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }">
           Home
         </a>
-        <a routerLink="/admin/categories" routerLinkActive="active">
-            Manage Categories
+
+        <a routerLink="/categories" routerLinkActive="active">
+          Categories
         </a>
-        <a routerLink="/admin/products" routerLinkActive="active">
-          Manage Products
-        </a>
+
         <a routerLink="/products" routerLinkActive="active">
           Products
         </a>
 
-        <a routerLink="/admin"
-           routerLinkActive="active">
-          Dashboard
-        </a>
+        @if (authService.isLoggedIn()) {
+
+          @if (authService.getRole()?.toLowerCase() === 'customer') {
+            <a routerLink="/cart">Cart</a>
+            <a routerLink="/orders">My Orders</a>
+          }
+
+          @if (authService.getRole()?.toLowerCase() === 'admin') {
+            <a routerLink="/admin">Admin</a>
+          }
+
+          <button type="button" (click)="logout()">
+            Logout
+          </button>
+
+        } @else {
+
+          <a routerLink="/login" routerLinkActive="active">
+            Login
+          </a>
+
+          <a routerLink="/register" routerLinkActive="active">
+            Register
+          </a>
+
+        }
 
       }
 

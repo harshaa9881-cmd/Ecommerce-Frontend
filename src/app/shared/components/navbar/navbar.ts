@@ -1,41 +1,26 @@
+import { Component, Input } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
-import { Component, Input, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-
-import { CartService } from '../../../core/services/cart.service';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, AsyncPipe],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css']
 })
-export class Navbar implements OnInit {
+export class Navbar {
 
   @Input() isAdmin: boolean = false;
 
-  get cartCount$() {
-  return this.cartService.cartCount$;
-}
-
   constructor(
-    private cartService: CartService,
-    private authService: AuthService
+    public authService: AuthService,
+    private router: Router
   ) { }
 
-  ngOnInit(): void {
-
-    if (!this.isAdmin && this.authService.isLoggedIn()) {
-
-      this.cartService.getCart().subscribe({
-        error: (error) => {
-          console.error('Unable to load cart count:', error);
-        }
-      });
-
-    }
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

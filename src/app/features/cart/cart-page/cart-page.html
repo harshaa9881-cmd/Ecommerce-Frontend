@@ -110,10 +110,9 @@
           {{ cart()!.totalAmount | currency:'INR':'symbol':'1.2-2' }}
         </h3>
 
-        <p class="checkout-note">
-          Checkout will be available in the next commit.
-        </p>
-
+        <a routerLink="/checkout" class="checkout-button">
+            Proceed to Checkout
+        </a>
       </div>
 
     </div>

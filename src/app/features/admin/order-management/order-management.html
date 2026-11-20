@@ -1,0 +1,73 @@
+<section class="admin-orders">
+
+  <h1>Order Management</h1>
+
+  @if (successMessage) {
+    <p class="success-message">{{ successMessage }}</p>
+  }
+
+  @if (errorMessage) {
+    <p class="error-message">{{ errorMessage }}</p>
+  }
+
+  @if (loading) {
+    <p>Loading orders...</p>
+  }
+  @else if (orders.length === 0) {
+    <p>No orders found.</p>
+  }
+  @else {
+
+    @for (order of orders; track order.orderId) {
+
+      <div class="admin-order-card">
+
+        <div class="order-heading">
+          <h2>Order #{{ order.orderId }}</h2>
+
+          <strong>
+            {{ order.totalAmount | currency:'INR' }}
+          </strong>
+        </div>
+
+        <p>
+          Order Date: {{ order.orderDate | date:'medium' }}
+        </p>
+
+        <p>Customer ID: {{ order.userId }}</p>
+
+        <p>Payment: {{ order.paymentMethod }}</p>
+
+        <h3>Items</h3>
+
+        @for (item of order.items; track item.orderItemId) {
+          <p>
+            {{ item.productName }}
+            × {{ item.quantity }}
+          </p>
+        }
+
+        <div class="status-section">
+
+          <label>Update Status</label>
+
+          <select
+            [value]="order.orderStatus"
+            (change)="updateStatus(order.orderId, $event)">
+
+            @for (status of statuses; track status) {
+              <option [value]="status">
+                {{ status }}
+              </option>
+            }
+
+          </select>
+
+        </div>
+
+      </div>
+    }
+
+  }
+
+</section>

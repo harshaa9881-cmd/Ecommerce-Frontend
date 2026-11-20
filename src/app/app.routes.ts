@@ -11,6 +11,15 @@ import { CartPage } from './features/cart/cart-page/cart-page';
 import { ProductList } from './features/products/product-list/product-list';
 import { ProductDetails } from './features/products/product-details/product-details';
 
+import { Checkout } from './features/orders/checkout/checkout';
+import { OrderConfirmation } from './features/orders/order-confirmation/order-confirmation';
+import { OrderHistory } from './features/orders/order-history/order-history';
+import { OrderManagement } from './features/admin/order-management/order-management';
+
+import { authGuard } from './core/guards/auth.guard';
+import { adminGuard } from './core/guards/admin.guard';
+import { customerGuard } from './core/guards/customer.guard';
+
 import { Login } from './features/auth/login/login';
 import { Register } from './features/auth/register/register';
 import { ProductManagement } from './features/admin/product-management/product-management/product-management';
@@ -29,6 +38,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayout,
+    canActivate: [adminGuard],
     children: [
       {
         path: 'categories',
@@ -37,29 +47,49 @@ export const routes: Routes = [
     {
       path: 'products',
       component: ProductManagement
+    },
+    {
+      path: 'orders',
+      component: OrderManagement
+    },
+    {
+      path: 'checkout',
+      component: Checkout,
+      canActivate: [customerGuard]
+    },
+    {
+      path: 'order-confirmation/:id',
+      component: OrderConfirmation,
+      canActivate: [customerGuard]
+    },
+    {
+      path: 'orders',
+      component: OrderHistory,
+      canActivate: [customerGuard]
     }
     ]
   },
   {
-  path: 'products',
-  component: ProductList
-},
-{
-  path: 'login',
-  component: Login
-},
-{
-  path: 'register',
-  component: Register
-},
-{
-  path: 'products/:id',
-  component: ProductDetails
-},
-{
-  path: 'cart',
-  component: CartPage
-},
+    path: 'products',
+    component: ProductList
+  },
+  {
+    path: 'login',
+    component: Login
+  },
+  {
+    path: 'register',
+    component: Register
+  },
+  {
+    path: 'products/:id',
+    component: ProductDetails
+  },
+  {
+    path: 'cart',
+    component: CartPage,
+    canActivate: [customerGuard]
+  },
 
   {
     path: '**',
